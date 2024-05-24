@@ -43,10 +43,10 @@
 function mudarCor() {
     let body = document.getElementById("trocar-tema");
     let corAtual = body.style.backgroundColor;
-    let trocar = corAtual === "white" ? "black" : "white"; // Altere as cores conforme necessário
+    let trocar = corAtual === "white" ? "#1C1C1C" : "white"; // Altere as cores conforme necessário
     body.style.backgroundColor = trocar;
 
-    if (trocar === "black") {
+    if (trocar === "#1C1C1C") {
         document.getElementById("h2").style.color = "white";
         document.getElementById("botao").style.color = "white";
         document.querySelector('.btn-trocar-cor').classList.add('btn-trocar-cor-black');

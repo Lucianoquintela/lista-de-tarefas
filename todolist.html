@@ -1,0 +1,185 @@
+<body id="trocar-tema">
+
+<div class="container">
+<div class="cabecalho">
+<h2 id="h2">Lista de Tarefas</h2>
+<button onclick="mudarCor()" class="btn-trocar-cor">Mudar Tema</button>
+</div>
+
+<div class="areaInput">
+<input class="input" placeholder="Adicionar tarefa"/>
+<button id="botao" onclick="addTarefa()" class="button-add"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40px" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+</svg></button>
+
+</div>
+
+<div class="tarefasLista">
+<ol id="ul">
+
+</ol>
+</div>
+
+</div>
+
+</body>
+
+<script>
+
+function mudarCor() {
+    let body = document.getElementById("trocar-tema");
+    let corAtual = body.style.backgroundColor;
+    let trocar = corAtual === "white" ? "black" : "white"; // Altere as cores conforme necessário
+    body.style.backgroundColor = trocar;
+
+    if (trocar === "black") {
+        document.getElementById("h2").style.color = "white";
+        document.getElementById("botao").style.color = "white";
+        document.querySelector('.btn-trocar-cor').classList.add('btn-trocar-cor-black');
+    } else {
+        document.getElementById("h2").style.color = "black";
+        document.getElementById("botao").style.color = "black";
+        document.querySelector('.btn-trocar-cor').classList.remove('btn-trocar-cor-black');
+    }
+}
+
+</script>
+
+<script>
+// função apertar enter e adicionar a tarefa 
+document.querySelector(".input").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    addTarefa();
+  }
+});
+</script>
+<script>
+function addTarefa() {
+ 
+ let tarefaPraAdicionar = document.querySelector(".input").value
+ 
+ let tarefasLista = document.getElementById("ul")
+ 
+ if (tarefaPraAdicionar == "") {
+    alert("Digite algo") 
+ } else {
+     
+     let novaTarefa = document.createElement("li");
+        novaTarefa.textContent = tarefaPraAdicionar;
+        
+        novaTarefa.style.color = "green";
+        tarefasLista.appendChild(novaTarefa);            
+     
+     document.querySelector(".input").value = ""; 
+      
+        
+ }
+ 
+}
+
+</script>
+<style>
+*{
+    margin:0;  
+    padding:0;
+}
+
+body{   
+    font-family: "Raleway", sans-serif;
+      
+}
+li{
+    font-size:20px;
+    font-weight:bolder;
+    
+   
+}
+
+.container{  
+    padding:30px;
+}
+
+.areaInput{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:30px;        
+}
+
+.input{
+    width:82%;        
+    padding:20px;
+    border-radius:10px;    
+    font-weight:bold;
+    font-size:18px;
+    border: solid 2px #ccc;
+}
+
+.input:focus {
+    outline: none; /* Remove a borda */
+    border-color: #4CAF50; 
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+.button-add{
+    width:18%%;
+    padding:18px;
+    border-radius:10px;   
+    font-size:20px;
+    background-color:transparent;  
+    border:none;  
+    transition: transform 0.3s ease-in-out;
+  
+}
+
+.button-add:hover{
+   transform: scale(0.95);
+   background-color:#4CAF50;
+   color:white;
+   
+}
+
+.tarefasLista{
+    padding-left:40px;
+    margin-top:40px;
+    
+    
+    
+}
+
+.btn-trocar-cor-black {
+    background-color: #4CAF50;
+    color: #000;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.btn-trocar-cor-black:hover {
+    background-color: #33ff33;
+    box-shadow: 0 0 20px #33ff33;
+}
+
+.btn-trocar-cor{
+    font-size:18;
+    padding:10px;
+    font-weight:bolder;
+    border-radius: 5px;
+  
+  color: #000;
+  border: none;
+  cursor: pointer;
+    
+}
+.cabecalho{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+  
+}
+.btn-trocar-cor:hover {
+  background-color: #4CAF50;
+  color:white;
+  
+}
+</style>
